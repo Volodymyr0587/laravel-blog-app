@@ -21,10 +21,10 @@
             <p class="brand-title"><a href="{{ route('welcome.index') }}">Awesome Blog</a></p>
             <div class="side-links">
                 <ul>
-                    <li><a class="active" href="{{ route('welcome.index') }}">Home</a></li>
-                    <li><a href="{{ route('blog.index') }}">Blog</a></li>
-                    <li><a href="{{ route('blog.about') }}">About</a></li>
-                    <li><a href="{{ route('blog.contact.index') }}">Contact</a></li>
+                    <li><a class="{{ request()->routeIs('welcome.index') ? 'active' : '' }}" href="{{ route('welcome.index') }}">Home</a></li>
+                    <li><a class="{{ request()->routeIs('blog.index') ? 'active' : '' }}" href="{{ route('blog.index') }}">Blog</a></li>
+                    <li><a class="{{ request()->routeIs('blog.about') ? 'active' : '' }}" href="{{ route('blog.about') }}">About</a></li>
+                    <li><a class="{{ request()->routeIs('blog.contact.index') ? 'active' : '' }}" href="{{ route('blog.contact.index') }}">Contact</a></li>
                 </ul>
             </div>
             <!-- sidebar footer -->

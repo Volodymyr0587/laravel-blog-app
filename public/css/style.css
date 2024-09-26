@@ -109,6 +109,7 @@ img {
 
 .side-links .active {
   color: white;
+  font-weight: bolder;
 }
 
 .side-links li a {
