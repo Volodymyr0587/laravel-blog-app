@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - Alphayo Blog</title>
+    <title>Home - Awesome Blog</title>
     <!-- Css -->
     {{-- <link rel="stylesheet" href="style.css" /> --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
@@ -18,7 +18,7 @@
         <!-- sidebar -->
         <div class="sidebar">
             <span class="closeButton">&times;</span>
-            <p class="brand-title"><a href="{{ route('welcome.index') }}">Alphayo Blog</a></p>
+            <p class="brand-title"><a href="{{ route('welcome.index') }}">Awesome Blog</a></p>
             <div class="side-links">
                 <ul>
                     <li><a class="active" href="{{ route('welcome.index') }}">Home</a></li>
@@ -34,7 +34,7 @@
                     <a href=""><i class="fab fa-instagram"></i></a>
                     <a href=""><i class="fab fa-twitter"></i></a>
                 </div>
-                <small>&copy 2021 Alphayo Blog</small>
+                <small>&copy 2021 Awesome Blog</small>
             </footer>
         </div>
         <!-- Menu Button -->
@@ -52,7 +52,7 @@
                 <a href=""><i class="fab fa-instagram"></i></a>
                 <a href=""><i class="fab fa-twitter"></i></a>
             </div>
-            <small>&copy 2021 Alphayo Blog</small>
+            <small>&copy {{ date('Y') }} Awesome Blog</small>
         </footer>
     </div>
     <!-- Click events to menu and close buttons using javaascript-->

@@ -29,8 +29,8 @@
                 <div class="specific-info">
                     <i class="fas fa-envelope-open-text"></i>
                     <div>
-                        <a href="mailto:info@alphayo.co.ke">
-                            <p class="title">info@alphayo.co.ke</p>
+                        <a href="mailto:info@blog.com">
+                            <p class="title">info@blog.com</p>
                         </a>
                         <p class="subtitle">Send us your query anytime!</p>
                     </div>

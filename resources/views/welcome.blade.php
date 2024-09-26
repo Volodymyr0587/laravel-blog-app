@@ -3,9 +3,9 @@
 <!-- header -->
 @section('header')
 <!-- header -->
-<header class="header" style=" background-image: url({{asset('images/photography.jpg')}});">
+<header class="header" style=" background-image: url({{asset('images/laptop-on-the-table.jpg')}});">
     <div class="header-text">
-        <h1>Alphayo Blog</h1>
+        <h1>Awesome Blog</h1>
         <h4>Home of verified news...</h4>
     </div>
     <div class="overlay"></div>
