@@ -10,13 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <!-- Font awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-        {{-- CKEditor CDN --}}
-        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.1/ckeditor5.css">
-        <style>
-            .ck-editor__editable_inline {
-                min-height: 300px;
-            }
-        </style>
+        @yield('head')
     </head>
 
     <body>
@@ -101,41 +95,7 @@
             });
         </script>
 
-        <script type="importmap">
-            {
-                "imports": {
-                    "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.1.1/ckeditor5.js",
-                    "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.1.1/"
-                }
-            }
-        </script>
-
-        <script type="module">
-            import {
-                ClassicEditor,
-                Essentials,
-                Bold,
-                Italic,
-                Font,
-                Paragraph
-            } from 'ckeditor5';
-
-            ClassicEditor
-                .create( document.querySelector( '#body' ), {
-                    plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
-                    toolbar: [
-                        'undo', 'redo', '|', 'bold', 'italic', '|',
-                        'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-                    ]
-                } )
-                .then( editor => {
-                    window.editor = editor;
-                } )
-                .catch( error => {
-                    console.error( error );
-                } );
-        </script>
-
+        @yield('scripts')
     </body>
 
 </html>
