@@ -20,6 +20,11 @@ Route::name('blog.')->group(function () {
     //% contact page
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
+    Route::middleware('auth')->group(function () {
+        //% create, update, delete posts
+        Route::get('/blog/craete', [BlogController::class, 'create'])->name('create');
+    });
+
 });
 
 Route::get('/dashboard', function () {

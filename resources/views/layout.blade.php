@@ -33,6 +33,7 @@
                         <li><a class="{{ request()->routeIs('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
                         @endguest
                         @auth
+                        <li><a class="{{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashbord</a></li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <li><a onclick="event.preventDefault(); this.closest('form').submit();"
@@ -41,6 +42,7 @@
                                     Log out
                                 </a>
                             </li>
+                        </form>
                         @endauth
                     </ul>
                 </div>
