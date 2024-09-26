@@ -250,30 +250,37 @@ footer small {
 
 /* Pagination */
 
-​.pagination {
-  display: inline-block;
-}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap; /* Prevents wrapping */
+  }
 
-#pagination {
-  margin: 3rem 3rem;
-}
+  #pagination {
+    margin: 3rem 3rem;
+  }
 
-.pagination a {
-  color: white;
-  float: left;
-  padding: 6px 16px;
-  text-decoration: none;
-}
+  .pagination a {
+    color: white;
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+  }
 
-.pagination a.active {
-  background-color: #4caf50;
-  color: white;
-}
+  .pagination a.active {
+    background-color: #4caf50;
+    color: white;
+  }
 
-.pagination a:hover {
-  background-color: #ddd;
-  color: black;
-}
+  .pagination a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+
+
+
 
 /* Single Blog */
 .single-blog-post h1 {
