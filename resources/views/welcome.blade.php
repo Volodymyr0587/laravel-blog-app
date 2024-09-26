@@ -31,10 +31,10 @@
 
         <div class="side-links">
           <ul>
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a class="active" href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('blog.index') }}">Blog</a></li>
+            <li><a href="{{ route('blog.about') }}">About</a></li>
+            <li><a href="{{ route('blog.contact') }}">Contact</a></li>
           </ul>
         </div>
 
@@ -66,7 +66,7 @@
               <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-              <a href="single-blog.html"
+              <a href="{{ route('blog.show') }}"
                 >Benefits of Getting Covid 19 Vaccination</a
               >
             </h4>
@@ -79,7 +79,7 @@
               <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-              <a href="single-blog.html">Top 10 Music Stories Never Told</a>
+              <a href="{{ route('blog.show') }}">Top 10 Music Stories Never Told</a>
             </h4>
           </div>
 
@@ -90,7 +90,7 @@
               <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-              <a href="single-blog.html"
+              <a href="{{ route('blog.show') }}"
                 >WRC Safari Rally Back To Kenya After 19 Years</a
               >
             </h4>
@@ -103,7 +103,7 @@
               <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-              <a href="single-blog.html">Premier League 2021/2022 Fixtures</a>
+              <a href="{{ route('blog.show') }}">Premier League 2021/2022 Fixtures</a>
             </h4>
           </div>
         </section>
