@@ -7,11 +7,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home - Awesome Blog</title>
         <!-- Css -->
-        {{--
-        <link rel="stylesheet" href="style.css" /> --}}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <!-- Font awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        {{-- CKEditor CDN --}}
+        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.1/ckeditor5.css">
+        <style>
+            .ck-editor__editable_inline {
+                min-height: 300px;
+            }
+        </style>
     </head>
 
     <body>
@@ -24,16 +29,23 @@
                 <p class="brand-title"><a href="{{ route('welcome.index') }}">Awesome Blog</a></p>
                 <div class="side-links">
                     <ul>
-                        <li><a class="{{ request()->routeIs('welcome.index') ? 'active' : '' }}" href="{{ route('welcome.index') }}">Home</a></li>
-                        <li><a class="{{ request()->routeIs('blog.index') ? 'active' : '' }}" href="{{ route('blog.index') }}">Blog</a></li>
-                        <li><a class="{{ request()->routeIs('blog.about') ? 'active' : '' }}" href="{{ route('blog.about') }}">About</a></li>
-                        <li><a class="{{ request()->routeIs('blog.contact.index') ? 'active' : '' }}" href="{{ route('blog.contact.index') }}">Contact</a></li>
+                        <li><a class="{{ request()->routeIs('welcome.index') ? 'active' : '' }}"
+                                href="{{ route('welcome.index') }}">Home</a></li>
+                        <li><a class="{{ request()->routeIs('blog.index') ? 'active' : '' }}"
+                                href="{{ route('blog.index') }}">Blog</a></li>
+                        <li><a class="{{ request()->routeIs('blog.about') ? 'active' : '' }}"
+                                href="{{ route('blog.about') }}">About</a></li>
+                        <li><a class="{{ request()->routeIs('blog.contact.index') ? 'active' : '' }}"
+                                href="{{ route('blog.contact.index') }}">Contact</a></li>
                         @guest
-                        <li><a class="{{ request()->routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a></li>
-                        <li><a class="{{ request()->routeIs('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
+                        <li><a class="{{ request()->routeIs('login') ? 'active' : '' }}"
+                                href="{{ route('login') }}">Login</a></li>
+                        <li><a class="{{ request()->routeIs('register') ? 'active' : '' }}"
+                                href="{{ route('register') }}">Register</a></li>
                         @endguest
                         @auth
-                        <li><a class="{{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashbord</a></li>
+                        <li><a class="{{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                                href="{{ route('dashboard') }}">Dashbord</a></li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <li><a onclick="event.preventDefault(); this.closest('form').submit();"
@@ -88,6 +100,42 @@
                 document.querySelector(".sidebar").style.width = "0";
             });
         </script>
+
+        <script type="importmap">
+            {
+                "imports": {
+                    "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.1.1/ckeditor5.js",
+                    "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.1.1/"
+                }
+            }
+        </script>
+
+        <script type="module">
+            import {
+                ClassicEditor,
+                Essentials,
+                Bold,
+                Italic,
+                Font,
+                Paragraph
+            } from 'ckeditor5';
+
+            ClassicEditor
+                .create( document.querySelector( '#body' ), {
+                    plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
+                    toolbar: [
+                        'undo', 'redo', '|', 'bold', 'italic', '|',
+                        'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+                    ]
+                } )
+                .then( editor => {
+                    window.editor = editor;
+                } )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
+
     </body>
 
 </html>
