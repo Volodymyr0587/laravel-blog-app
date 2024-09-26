@@ -18,13 +18,13 @@
         <!-- sidebar -->
         <div class="sidebar">
             <span class="closeButton">&times;</span>
-            <p class="brand-title"><a href="">Alphayo Blog</a></p>
+            <p class="brand-title"><a href="{{ route('welcome.index') }}">Alphayo Blog</a></p>
             <div class="side-links">
                 <ul>
-                    <li><a class="active" href="/">Welcome</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a class="active" href="{{ route('welcome.index') }}">Home</a></li>
+                    <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                    <li><a href="{{ route('blog.about') }}">About</a></li>
+                    <li><a href="{{ route('blog.contact.index') }}">Contact</a></li>
                 </ul>
             </div>
             <!-- sidebar footer -->

@@ -24,7 +24,7 @@
                 <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-                <a href="single-blog.html">Benefits of Getting Covid 19 Vaccination</a>
+                <a href="{{ route('blog.show') }}">Benefits of Getting Covid 19 Vaccination</a>
             </h4>
         </div>
         <div class="card-blog-content">
@@ -34,7 +34,7 @@
                 <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-                <a href="single-blog.html">Top 10 Music Stories Never Told</a>
+                <a href="{{ route('blog.show') }}">Top 10 Music Stories Never Told</a>
             </h4>
         </div>
         <div class="card-blog-content">
@@ -44,7 +44,7 @@
                 <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-                <a href="single-blog.html">WRC Safari Rally Back To Kenya After 19 Years</a>
+                <a href="{{ route('blog.show') }}">WRC Safari Rally Back To Kenya After 19 Years</a>
             </h4>
         </div>
         <div class="card-blog-content">
@@ -54,7 +54,7 @@
                 <span style="float: right">Written By Alphayo Wakarindi</span>
             </p>
             <h4 style="font-weight: bolder">
-                <a href="single-blog.html">Premier League 2021/2022 Fixtures</a>
+                <a href="{{ route('blog.show') }}">Premier League 2021/2022 Fixtures</a>
             </h4>
         </div>
     </section>

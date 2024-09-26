@@ -6,7 +6,7 @@ use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 //% welocme page
-Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 
 Route::name('blog.')->group(function () {
     //% blog page
@@ -16,7 +16,7 @@ Route::name('blog.')->group(function () {
     //% about page
     Route::view('/about', 'about')->name('about');
     //% contact page
-    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 });
 
