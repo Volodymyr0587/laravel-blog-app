@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SearchPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
@@ -27,9 +28,10 @@ Route::name('blog.')->group(function () {
         Route::delete('/blog/{post}', [BlogController::class, 'destroy'])->name('destroy');
     });
 
+    //% Search blog post
+    Route::get('/blog/search', SearchPostController::class)->name('search');
     //% single blog post
     Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('show');
-
 });
 
 Route::get('/dashboard', function () {

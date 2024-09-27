@@ -3,7 +3,7 @@
 @section('main')
 <!-- main -->
 <main class="container">
-    <h2 class="header-title">All Blog Posts</h2>
+    <h2 class="header-title">{{ request()->has('search') ? "Seaarch Results For: $search" : 'All Blog Posts' }}</h2>
     @if (session()->has('status'))
         <p x-data="{show:true}" x-init="setTimeout(() => show = false, 4000)" x-show="show"
             style="color: #fff; width:100%;font-size:18px;font-weight:600;text-align:center;background:#5cb85c;padding:17px 0;margin-bottom:6px;">
@@ -11,8 +11,9 @@
         </p>
     @endif
     <div class="searchbar">
-        <form action="">
-            <input type="text" placeholder="Search..." name="search" />
+        <form action="{{ route('blog.search') }}">
+            @csrf
+            <input type="text" placeholder="Search..." name="search" value="{{ old('search') }}" />
 
             <button type="submit">
                 <i class="fa fa-search"></i>
@@ -54,7 +55,7 @@
             </div>
         @empty
         <h4 style="font-weight: bolder">
-            <p>{{ __("No Posts Yet.") }}</p>
+            <p>{{ __("No Posts Found.") }}</p>
         </h4>
         @endforelse
     </section>
