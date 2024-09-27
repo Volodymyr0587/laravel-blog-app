@@ -28,10 +28,17 @@ class Post extends Model
     {
         parent::boot();
 
-        static::saving(function ($post) {
+        static::creating(function ($post) {
             if (empty($post->slug)) {
+                // Створюємо базовий slug без ID
                 $post->slug = Str::slug($post->title);
             }
+        });
+
+        static::created(function ($post) {
+            // Додаємо ID до slug і зберігаємо знову
+            $post->slug = Str::slug($post->title) . '-' . $post->id;
+            $post->save();
         });
     }
 }
