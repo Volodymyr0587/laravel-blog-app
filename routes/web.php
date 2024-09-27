@@ -13,8 +13,6 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 Route::name('blog.')->group(function () {
     //% blog page
     Route::get('/blog', [BlogController::class, 'index'])->name('index');
-    //% single blog post
-    Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('show');
     //% about page
     Route::view('/about', 'about')->name('about');
     //% contact page
@@ -25,6 +23,9 @@ Route::name('blog.')->group(function () {
         Route::get('/blog/create', [BlogController::class, 'create'])->name('create');
         Route::post('/blog', [BlogController::class, 'store'])->name('store');
     });
+
+    //% single blog post
+    Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('show');
 
 });
 
