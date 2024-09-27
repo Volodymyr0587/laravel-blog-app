@@ -25,7 +25,7 @@ class SearchPostController extends Controller
             ],
             'LIKE',
             "%$search%"
-        )->latest()->get();
+        )->latest()->paginate(4)->withQueryString();
 
         return view('blog_posts.blog', compact('posts', 'search'));
     }
