@@ -14,7 +14,7 @@ Route::name('blog.')->group(function () {
     //% blog page
     Route::get('/blog', [BlogController::class, 'index'])->name('index');
     //% single blog post
-    Route::get('/blog/single-blog-post', [BlogController::class, 'show'])->name('show');
+    Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('show');
     //% about page
     Route::view('/about', 'about')->name('about');
     //% contact page

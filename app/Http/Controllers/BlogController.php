@@ -11,7 +11,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = auth()->user()->posts()->get();
+        $posts = Post::all();
         return view('blog_posts.blog', compact('posts'));
     }
 
@@ -45,9 +45,9 @@ class BlogController extends Controller
     }
 
 
-    public function show()
+    public function show(Post $post)
     {
-        return view('blog_posts.single-blog-post');
+        return view('blog_posts.single-blog-post', compact('post'));
     }
 
 

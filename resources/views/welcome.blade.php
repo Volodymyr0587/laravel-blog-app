@@ -17,46 +17,22 @@
 <main class="container">
     <h2 class="header-title">Latest Blog Posts</h2>
     <section class="cards-blog latest-blog">
+        @forelse ($posts as $post)
         <div class="card-blog-content">
-            <img src="{{asset('images/pic1.jpg')}}" alt="" />
+            <img src="{{$post->image_path ? asset('storage/' . $post->image_path) : asset('images/pic2.jpg') }}" alt="" />
             <p>
-                2 hours ago
-                <span style="float: right">Written By Alphayo Wakarindi</span>
+                {{ $post->created_at->diffForHumans() }}
+                <span style="float: right">Written By {{ $post->user->name }}</span>
             </p>
             <h4 style="font-weight: bolder">
-                <a href="{{ route('blog.show') }}">Benefits of Getting Covid 19 Vaccination</a>
+                <a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a>
             </h4>
         </div>
+        @empty
         <div class="card-blog-content">
-            <img src="{{asset('images/pic2.jpg')}}" alt="" />
-            <p>
-                23 hours ago
-                <span style="float: right">Written By Alphayo Wakarindi</span>
-            </p>
-            <h4 style="font-weight: bolder">
-                <a href="{{ route('blog.show') }}">Top 10 Music Stories Never Told</a>
-            </h4>
+            <h4 style="font-weight: bolder">No post yet.</h4>
         </div>
-        <div class="card-blog-content">
-            <img src="{{asset('images/pic3.jpg')}}" alt="" />
-            <p>
-                2 days ago
-                <span style="float: right">Written By Alphayo Wakarindi</span>
-            </p>
-            <h4 style="font-weight: bolder">
-                <a href="{{ route('blog.show') }}">WRC Safari Rally Back To Kenya After 19 Years</a>
-            </h4>
-        </div>
-        <div class="card-blog-content">
-            <img src="{{asset('images/pic4.jpg')}}" alt="" />
-            <p>
-                3 days ago
-                <span style="float: right">Written By Alphayo Wakarindi</span>
-            </p>
-            <h4 style="font-weight: bolder">
-                <a href="{{ route('blog.show') }}">Premier League 2021/2022 Fixtures</a>
-            </h4>
-        </div>
+        @endforelse
     </section>
 </main>
 @endsection
