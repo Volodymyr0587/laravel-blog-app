@@ -17,14 +17,15 @@
 
         <!-- Contact Form -->
         <div class="contact-form">
-            <form action="" method="">
+            <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <!-- Title -->
                 <label for="title"><span>Title</span></label>
                 <input type="text" id="title" name="title" />
 
                 <!-- Image -->
-                <label for="image"><span>Image</span></label>
-                <input type="file" id="image" name="image" />
+                <label for="image_path"><span>Image</span></label>
+                <input type="file" id="image_path" name="image_path" />
 
                 <!-- Body-->
                 <label for="body"><span>Body</span></label>

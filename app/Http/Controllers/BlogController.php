@@ -16,6 +16,12 @@ class BlogController extends Controller
         return view('blog_posts.create-blog-post');
     }
 
+    public function store(Request $request)
+    {
+        dd($request->all());
+
+    }
+
     public function show()
     {
         return view('blog_posts.single-blog-post');
