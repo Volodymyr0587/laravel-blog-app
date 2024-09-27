@@ -21,7 +21,7 @@
                 @csrf
                 <!-- Title -->
                 <label for="title"><span>Title</span></label>
-                <input type="text" id="title" name="title" />
+                <input type="text" id="title" name="title" value="{{ old('title') }}" />
                 @error('title')
                     <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
                 @enderror
@@ -35,7 +35,7 @@
 
                 <!-- Body-->
                 <label for="body"><span>Body</span></label>
-                <textarea id="body" name="body"></textarea>
+                <textarea id="body" name="body">{{ old('body') }}</textarea>
                 @error('body')
                     <p style="color: red; margin-top: 25px;">{{ $message }}</p>
                 @enderror
