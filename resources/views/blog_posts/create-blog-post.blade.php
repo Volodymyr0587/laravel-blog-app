@@ -22,14 +22,23 @@
                 <!-- Title -->
                 <label for="title"><span>Title</span></label>
                 <input type="text" id="title" name="title" />
+                @error('title')
+                    <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
+                @enderror
 
                 <!-- Image -->
                 <label for="image_path"><span>Image</span></label>
                 <input type="file" id="image_path" name="image_path" />
+                @error('image_path')
+                    <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
+                @enderror
 
                 <!-- Body-->
                 <label for="body"><span>Body</span></label>
                 <textarea id="body" name="body"></textarea>
+                @error('body')
+                    <p style="color: red; margin-top: 25px;">{{ $message }}</p>
+                @enderror
 
                 <!-- Button -->
                 <input type="submit" value="Submit" />

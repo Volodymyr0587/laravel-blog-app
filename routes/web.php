@@ -22,7 +22,7 @@ Route::name('blog.')->group(function () {
 
     Route::middleware('auth')->group(function () {
         //% create, update, delete posts
-        Route::get('/blog/craete', [BlogController::class, 'create'])->name('create');
+        Route::get('/blog/create', [BlogController::class, 'create'])->name('create');
         Route::post('/blog', [BlogController::class, 'store'])->name('store');
     });
 
