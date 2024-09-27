@@ -23,7 +23,6 @@
         </ul>
     </div>
     <section class="cards-blog latest-blog">
-
         @forelse ($posts as $post)
             <div class="card-blog-content">
                 <img src="{{$post->image_path ? asset('storage/' . $post->image_path) : asset('images/pic2.jpg') }}" alt="" />
@@ -40,20 +39,17 @@
             <p>{{ __("No Posts Yet.") }}</p>
         </h4>
         @endforelse
-
-
-
-
-        <!-- pagination -->
-        <div class="pagination" id="pagination">
-            <a href="">&laquo;</a>
-            <a class="active" href="">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-            <a href="">5</a>
-            <a href="">&raquo;</a>
-        </div>
     </section>
+    <!-- pagination -->
+    <div class="pagination" id="pagination">
+        <a href="">&laquo;</a>
+        <a class="active" href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a href="">4</a>
+        <a href="">5</a>
+        <a href="">&raquo;</a>
+    </div>
+    <br>
 </main>
 @endsection
