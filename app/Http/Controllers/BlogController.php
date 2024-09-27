@@ -32,7 +32,7 @@ class BlogController extends Controller
         // Save the post with mass assignment
         $user->posts()->create($postData);
 
-        return to_route('blog.index')->with('success', 'Post created successfully.');
+        return redirect()->back()->with('status', 'Post created successfully.');
     }
 
     protected function handleImageUpload($request)
