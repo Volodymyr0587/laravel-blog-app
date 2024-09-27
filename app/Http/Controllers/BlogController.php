@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -10,7 +11,8 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('blog_posts.blog');
+        $posts = auth()->user()->posts()->get();
+        return view('blog_posts.blog', compact('posts'));
     }
 
     public function create()
@@ -18,27 +20,28 @@ class BlogController extends Controller
         return view('blog_posts.create-blog-post');
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         $user = auth()->user();
 
-        $postData = $request->validate([
-            'title' => 'required|string|min:1|max:300',
-            'image_path' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
-            'body' => 'required|string|min:1|max:1000',
-        ]);
+        $postData = $request->validated();
 
-        if ($request->hasFile('image_path')) {
-            $postData['image_path'] = $request->file('image_path')->store('images', 'public');
-        }
+        // Handle image upload
+        $postData['image_path'] = $this->handleImageUpload($request);
 
-        $postData['slug'] = Str::slug($postData['title']);
-
-        $post = new Post($postData);
-        $post->user()->associate($user);
-        $post->save();
+        // Save the post with mass assignment
+        $user->posts()->create($postData);
 
         return to_route('blog.index')->with('success', 'Post created successfully.');
+    }
+
+    protected function handleImageUpload($request)
+    {
+        if ($request->hasFile('image_path')) {
+            return $request->file('image_path')->store('images', 'public');
+        }
+
+        return null;
     }
 
 
