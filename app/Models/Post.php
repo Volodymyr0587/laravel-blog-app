@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -39,6 +40,12 @@ class Post extends Model
             // Додаємо ID до slug і зберігаємо знову
             $post->slug = Str::slug($post->title) . '-' . $post->id;
             $post->save();
+        });
+
+        static::deleting(function ($post) {
+            if ($post->image_path) {
+                Storage::disk('public')->delete($post->image_path);
+            }
         });
     }
 }

@@ -22,6 +22,9 @@ Route::name('blog.')->group(function () {
         //% create, update, delete posts
         Route::get('/blog/create', [BlogController::class, 'create'])->name('create');
         Route::post('/blog', [BlogController::class, 'store'])->name('store');
+        Route::get('/blog/{post}/edit', [BlogController::class, 'edit'])->name('edit');
+        Route::put('/blog/{post}', [BlogController::class, 'update'])->name('update');
+        Route::delete('/blog/{post}', [BlogController::class, 'destroy'])->name('destroy');
     });
 
     //% single blog post
