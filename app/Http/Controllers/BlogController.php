@@ -23,7 +23,8 @@ class BlogController extends Controller
 
     public function create()
     {
-        return view('blog_posts.create-blog-post');
+        $categories = Category::all();
+        return view('blog_posts.create-blog-post', compact('categories'));
     }
 
     public function store(StorePostRequest $request)
@@ -36,7 +37,9 @@ class BlogController extends Controller
         $postData['image_path'] = $this->handleImageUpload($request);
 
         // Save the post with mass assignment
-        $user->posts()->create($postData);
+        $post = $user->posts()->create($postData);
+        // Attach categories to post through pivot table
+        $post->categories()->attach($request->category_id);
 
         return redirect()->back()->with('status', 'Post created successfully.');
     }
@@ -50,7 +53,9 @@ class BlogController extends Controller
     {
         Gate::authorize('edit-post', $post);
 
-        return view('blog_posts.edit-blog-post', compact('post'));
+        $categories = Category::all();
+
+        return view('blog_posts.edit-blog-post', compact('post', 'categories'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
@@ -67,6 +72,8 @@ class BlogController extends Controller
 
         // Save the post with mass assignment
         $post->update($postData);
+        // Sync categories to post through pivot table
+        $post->categories()->sync($request->category_id);
 
         return redirect()->back()->with('status', 'Post updated successfully.');
     }
@@ -93,6 +100,7 @@ class BlogController extends Controller
     {
         Gate::authorize('edit-post', $post);
 
+        $post->categories()->detach();
         $post->delete();
 
         return redirect()->route('blog.index')->with('status', 'Post deleted successfully.');

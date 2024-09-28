@@ -34,6 +34,21 @@
                     <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
                 @enderror
 
+                <!-- Categories Dropdown -->
+                <label for="categories">Choose a category</label>
+                <select name="category_id[]" id="categories" multiple>
+                    <option selected disabled>Select Category</option>
+                    @foreach ($categories as $category)
+                    <option required value="{{ $category->id }}"
+                        @if(in_array($category->id, $post->categories->pluck('id')->toArray())) selected @endif>
+                        {{ $category->name }}
+                    </option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
+                @enderror
+
                 <!-- Body-->
                 <label for="body"><span>Body</span></label>
                 <textarea id="editor" name="body">{{ old('body', $post->body) }}</textarea>

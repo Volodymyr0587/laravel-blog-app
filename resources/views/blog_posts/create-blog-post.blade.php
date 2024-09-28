@@ -23,21 +23,33 @@
                 <label for="title"><span>Title</span></label>
                 <input type="text" id="title" name="title" value="{{ old('title') }}" />
                 @error('title')
-                    <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
+                <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
                 @enderror
 
                 <!-- Image -->
                 <label for="image_path"><span>Image</span></label>
                 <input type="file" id="image_path" name="image_path" />
                 @error('image_path')
-                    <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
+                <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
+                @enderror
+
+                <!-- Categories Dropdown -->
+                <label for="categories">Choose a category</label>
+                <select name="category_id[]" id="categories" multiple>
+                    <option selected disabled>Select Category</option>
+                    @foreach ($categories as $category)
+                    <option required value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                <p style="color: red; margin-bottom: 25px;">{{ $message }}</p>
                 @enderror
 
                 <!-- Body-->
                 <label for="body"><span>Body</span></label>
                 <textarea id="editor" name="body">{{ old('body') }}</textarea>
                 @error('body')
-                    <p style="color: red; margin-top: 25px;">{{ $message }}</p>
+                <p style="color: red; margin-top: 25px;">{{ $message }}</p>
                 @enderror
 
                 <!-- Button -->
