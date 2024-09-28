@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,9 @@ class BlogController extends Controller
     public function index()
     {
         $posts = Post::latest()->paginate(4);
-        return view('blog_posts.blog', compact('posts'));
+        $categories = Category::all();
+
+        return view('blog_posts.blog', compact('posts', 'categories'));
     }
 
     public function create()
