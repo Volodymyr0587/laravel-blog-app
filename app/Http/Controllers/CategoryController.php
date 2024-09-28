@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::latest()->get();
+        return view('categories.index-categories', compact('categories'));
     }
 
     /**
@@ -29,7 +30,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $categoryData = $request->validate([
-            'name' => 'required|string|min:1|max:100|unique:categories,name'
+            'name' => 'required|string|min:2|max:100|unique:categories,name'
         ]);
 
         Category::create($categoryData);
@@ -66,6 +67,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
     }
 }
