@@ -24,7 +24,7 @@
         <p>Related</p>
         @forelse ($relatedPosts as $relatedPost)
         <div class="recommended-cards">
-            <a href="">
+            <a href="{{ route('blog.show', $relatedPost) }}">
                 <div class="recommended-card">
                     <img src="{{$relatedPost->image_path ? asset('storage/' . $relatedPost->image_path) : asset('images/pic2.jpg') }}" alt="" />
                     <h4>

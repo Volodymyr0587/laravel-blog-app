@@ -59,12 +59,7 @@ class BlogController extends Controller
         $categoryIds = $post->categories->pluck('id')->toArray();
 
         // Fetch all posts that belong to the same categories, excluding the current post
-        $relatedPosts = Post::whereHas('categories', function ($query) use ($categoryIds) {
-            $query->whereIn('categories.id', $categoryIds);
-        })
-            ->where('id', '!=', $post->id) // Exclude the current post
-            ->distinct() // Prevent duplicate posts if they belong to multiple shared categories
-            ->paginate(2);
+        $relatedPosts = Post::relatedPosts($categoryIds, $post->id)->paginate(2);
 
         return view('blog_posts.single-blog-post', compact('post', 'relatedPosts'));
     }

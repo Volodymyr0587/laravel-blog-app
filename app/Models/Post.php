@@ -43,6 +43,25 @@ class Post extends Model
         return $query;
     }
 
+    // public function scopeRelatedPosts(Builder $query, $category_id)
+    // {
+    //     return $query->whereHas('categories', function ($q) use ($category_id) {
+    //         $q->whereIn('categories.id', $category_id);
+    //     })
+    //         ->where('id', '!=', $this->id) // Exclude the current post
+    //         ->distinct();
+    // }
+
+    public function scopeRelatedPosts(Builder $query, $categoryIds, $postId)
+    {
+        return $query->whereHas('categories', function ($q) use ($categoryIds) {
+            $q->whereIn('categories.id', $categoryIds);
+        })
+            ->where('id', '!=', $postId) // Exclude the current post by passing its ID
+            ->distinct();
+    }
+
+
     protected static function boot()
     {
         parent::boot();
