@@ -64,7 +64,7 @@ class BlogController extends Controller
         })
             ->where('id', '!=', $post->id) // Exclude the current post
             ->distinct() // Prevent duplicate posts if they belong to multiple shared categories
-            ->get();
+            ->paginate(2);
 
         return view('blog_posts.single-blog-post', compact('post', 'relatedPosts'));
     }

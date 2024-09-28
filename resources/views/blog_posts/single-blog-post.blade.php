@@ -19,6 +19,7 @@
             {!! $post->body !!}
         </div>
     </section>
+    <div>{{ $relatedPosts->links('pagination::default') }}</div>
     <section class="recommended">
         <p>Related</p>
         @forelse ($relatedPosts as $relatedPost)
@@ -35,7 +36,6 @@
         @empty
             No Related Posts Found
         @endforelse
-
     </section>
 </main>
 @endsection
