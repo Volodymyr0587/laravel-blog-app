@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
@@ -29,11 +30,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+
         $categoryData = $request->validate([
             'name' => 'required|string|min:2|max:100|unique:categories,name'
         ]);
 
-        Category::create($categoryData);
+        $user->categories()->create($categoryData);
 
         return redirect()->back()->with('status', 'Category created successfully.');
     }
@@ -51,7 +54,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        Gate::authorize('edit-category', $category);
+
+        return view('categories.edit-category', compact('category'));
     }
 
     /**
@@ -59,7 +64,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        Gate::authorize('edit-category', $category);
+
+        $categoryData = $request->validate([
+            'name' => 'required|string|min:2|max:100|unique:categories,name'
+        ]);
+
+        $category->update($categoryData);
+
+        return to_route('categories.index')->with('status', 'Category updated successfully.');
     }
 
     /**
@@ -67,6 +80,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        Gate::authorize('edit-category', $category);
+
         $category->delete();
+
+        return redirect()->route('categories.index')->with('status', 'Category deleted successfully.');
     }
 }

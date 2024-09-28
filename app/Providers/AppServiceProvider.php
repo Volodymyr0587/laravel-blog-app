@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::define('edit-post', function (User $user, Post $post) {
             return $post->user()->is($user);
+        });
+
+        Gate::define('edit-category', function (User $user, Category $category) {
+            return $category->user()->is($user);
         });
     }
 }
