@@ -22,7 +22,7 @@
     <div class="categories">
         <ul>
             @forelse ($categories as $category)
-                <li><a href="">{{ $category->name }}</a></li>
+                <li><a href="{{ route('blog.filterByCategory', $category) }}">{{ $category->name }}</a></li>
             @empty
                 <li><a href="">No categories yet</a></li>
             @endforelse

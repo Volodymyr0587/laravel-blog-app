@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +30,17 @@ class Post extends Model
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function scopeFilterByCategory(Builder $query, $category_id): Builder
+    {
+        if ($category_id) {
+            return $query->whereHas('categories', function ($q) use ($category_id) {
+                $q->where('categories.id', $category_id);
+            });
+        }
+
+        return $query;
     }
 
     protected static function boot()

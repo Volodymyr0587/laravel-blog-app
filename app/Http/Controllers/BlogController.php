@@ -21,6 +21,15 @@ class BlogController extends Controller
         return view('blog_posts.blog', compact('posts', 'categories'));
     }
 
+    public function filterByCategory(Category $category)
+    {
+        // Use the query scope (defined in the model Post) to filter posts by category
+        $posts = Post::filterByCategory($category->id)->paginate(4);
+        $categories = Category::all();
+
+        return view('blog_posts.blog', compact('posts', 'categories'));
+    }
+
     public function create()
     {
         $categories = Category::all();
