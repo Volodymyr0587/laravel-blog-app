@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SearchPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
@@ -33,6 +34,9 @@ Route::name('blog.')->group(function () {
     //% single blog post
     Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('show');
 });
+
+//% Category resource controller
+Route::resource('/categories', CategoryController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
