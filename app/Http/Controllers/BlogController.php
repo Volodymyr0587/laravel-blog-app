@@ -46,7 +46,18 @@ class BlogController extends Controller
 
     public function show(Post $post)
     {
-        return view('blog_posts.single-blog-post', compact('post'));
+        // Get all categories associated with the current post
+        $categoryIds = $post->categories->pluck('id')->toArray();
+
+        // Fetch all posts that belong to the same categories, excluding the current post
+        $relatedPosts = Post::whereHas('categories', function ($query) use ($categoryIds) {
+            $query->whereIn('categories.id', $categoryIds);
+        })
+            ->where('id', '!=', $post->id) // Exclude the current post
+            ->distinct() // Prevent duplicate posts if they belong to multiple shared categories
+            ->get();
+
+        return view('blog_posts.single-blog-post', compact('post', 'relatedPosts'));
     }
 
     public function edit(Post $post)
