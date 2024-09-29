@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,8 @@ class SearchPostController extends Controller
             "%$search%"
         )->latest()->paginate(4)->withQueryString();
 
-        return view('blog_posts.blog', compact('posts', 'search'));
+        $categories = Category::all();
+
+        return view('blog_posts.blog', compact('posts', 'search', 'categories'));
     }
 }
