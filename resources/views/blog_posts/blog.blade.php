@@ -3,7 +3,14 @@
 @section('main')
 <!-- main -->
 <main class="container">
-    <h2 class="header-title">{{ request()->has('search') ? "Seaarch Results For: $search" : "All Blog Posts" }}</h2>
+
+    <h2 class="header-title">
+        {{ request()->has('search') ? "Search Results For: $search" :
+           (request()->routeIs('blog.filterByCategory') ? "Posts in Category: " . optional(request()->route('category'))->name :
+           (request()->routeIs('blog.filterByUser') ? "Posts by User: " . optional(request()->route('user'))->name :
+           "All Blog Posts"))}}
+    </h2>
+
     <!-- Status message-->
     <x-flash-messages.status-message />
 
@@ -20,6 +27,7 @@
     </div>
     <div class="categories">
         <ul>
+            <li><a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-md font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600" href="{{ route('blog.index') }}">All</a></li>
             @forelse ($categories as $category)
                 <li><a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-md font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600" href="{{ route('blog.filterByCategory', $category) }}">{{ $category->name }}</a></li>
             @empty
