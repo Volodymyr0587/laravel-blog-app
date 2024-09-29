@@ -26,15 +26,14 @@
         </form>
     </div>
     <div class="categories">
-        <ul>
-            <li><a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-md font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600" href="{{ route('blog.index') }}">All</a></li>
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 my-4">
+            <a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-md font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600" href="{{ route('blog.index') }}">All</a>
             @forelse ($categories as $category)
-                <li><a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-md font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600" href="{{ route('blog.filterByCategory', $category) }}">{{ $category->name }}</a></li>
+                <a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-md font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600" href="{{ route('blog.filterByCategory', $category) }}">{{ $category->name }}</a>
             @empty
-                <li><a href="">No categories yet</a></li>
+                <a href="">No categories yet</a>
             @endforelse
-
-        </ul>
+        </div>
     </div>
     <section class="cards-blog latest-blog">
         @forelse ($posts as $post)
