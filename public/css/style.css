@@ -388,7 +388,7 @@ footer small {
   width: 100%;
 }
 
-.single-blog-post .about-text {
+/* .single-blog-post .about-text {
   max-width: 700px;
   margin: 17px auto;
   line-height: 1.5;
@@ -397,7 +397,7 @@ footer small {
 .single-blog-post .about-text li {
   font-weight: 300;
   margin-bottom: 20px;
-}
+} */
 
 .single-blog-post p span {
   float: right;

@@ -18,7 +18,7 @@
             <img src="{{$post->image_path ? asset('storage/' . $post->image_path) : asset('images/pic2.jpg') }}" alt="" />
         </div>
 
-        <div class="about-text">
+        <div class="max-w-[700px] mx-auto my-4 px-4 lg:px-0 leading-6 overflow-hidden">
             {!! $post->body !!}
         </div>
     </section>
