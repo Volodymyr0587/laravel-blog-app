@@ -35,6 +35,8 @@ Route::name('blog.')->group(function () {
     Route::get('/blog/search', SearchPostController::class)->name('search');
     //% Filter blog posts by category
     Route::get('/blog/category/{category}', [BlogController::class, 'filterByCategory'])->name('filterByCategory');
+    //% Filter blog posts by user
+    Route::get('/blog/user/{user}', [BlogController::class, 'filterByUser'])->name('filterByUser');
     //% single blog post
     Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('show');
 });

@@ -8,7 +8,10 @@
 
         <p class="time-and-author">
             {{ $post->created_at->diffForHumans() }}
-            <span>Written By {{ $post->user->name }}</span>
+            <span>Written By <a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600"
+                href="{{ route('blog.filterByUser', $post->user) }}">
+                {{ $post->user->name }}</a>
+            </span>
         </p>
 
         <div class="single-blog-post-ContentImage" data-aos="fade-left">

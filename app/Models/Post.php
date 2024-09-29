@@ -43,6 +43,15 @@ class Post extends Model
         return $query;
     }
 
+    public function scopeFilterByUser(Builder $query, $user_id): Builder
+    {
+        if ($user_id) {
+            return $query->where('user_id', $user_id);
+        }
+
+        return $query;
+    }
+
     public function scopeRelatedPosts(Builder $query, $categoryIds, $postId)
     {
         return $query->whereHas('categories', function ($q) use ($categoryIds) {

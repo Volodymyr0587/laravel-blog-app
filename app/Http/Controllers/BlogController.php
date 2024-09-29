@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -25,6 +26,14 @@ class BlogController extends Controller
     {
         // Use the query scope (defined in the model Post) to filter posts by category
         $posts = Post::filterByCategory($category->id)->paginate(4);
+        $categories = Category::all();
+
+        return view('blog_posts.blog', compact('posts', 'categories'));
+    }
+
+    public function filterByUser(User $user)
+    {
+        $posts = Post::filterByUser(($user->id))->paginate(4);
         $categories = Category::all();
 
         return view('blog_posts.blog', compact('posts', 'categories'));
