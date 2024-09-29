@@ -27,6 +27,8 @@ Route::name('blog.')->group(function () {
         Route::get('/blog/{post}/edit', [BlogController::class, 'edit'])->name('edit');
         Route::put('/blog/{post}', [BlogController::class, 'update'])->name('update');
         Route::delete('/blog/{post}', [BlogController::class, 'destroy'])->name('destroy');
+        //% Send Contact Us Email
+        Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
     });
 
     //% Search blog post
