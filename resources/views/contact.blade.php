@@ -14,16 +14,16 @@
                 <div class="specific-info">
                     <i class="fas fa-home"></i>
                     <div>
-                        <p class="title">4th floor, Hi Center</p>
-                        <p class="subtitle">Moi Avenue</p>
+                        <p class="title">4th floor, Some kind of building</p>
+                        <p class="subtitle">Some street</p>
                     </div>
                 </div>
                 <div class="specific-info">
                     <i class="fas fa-phone-alt"></i>
                     <div>
-                        <a href="">+254 720 XXX XXX </a>
+                        <a href="">+380XX XXX XX XX</a>
                         <br />
-                        <a href="">+254 721 XXX XXX</a>
+                        <a href="">+380XX XXX XX XX</a>
 
                         <p class="subtitle">Mon to Fri 9am-6pm</p>
                     </div>
@@ -31,8 +31,8 @@
                 <div class="specific-info">
                     <i class="fas fa-envelope-open-text"></i>
                     <div>
-                        <a href="mailto:info@alphayo.co.ke">
-                            <p class="title">info@alphayo.co.ke</p>
+                        <a href="mailto:info@awesome.some.mail.com">
+                            <p class="title">awesome.some.mail.com</p>
                         </a>
                         <p class="subtitle">Send us your query anytime!</p>
                     </div>
