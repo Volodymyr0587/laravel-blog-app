@@ -3,8 +3,7 @@
 @section('main')
 <!-- main -->
 <main class="container">
-    <h2 class="header-title">{{ request()->has('search') ? "Seaarch Results For: $search" : 'All Blog Posts' }}</h2>
-
+    <h2 class="header-title">{{ request()->has('search') ? "Seaarch Results For: $search" : "All Blog Posts" }}</h2>
     <!-- Status message-->
     <x-flash-messages.status-message />
 
@@ -22,7 +21,7 @@
     <div class="categories">
         <ul>
             @forelse ($categories as $category)
-                <li><a href="{{ route('blog.filterByCategory', $category) }}">{{ $category->name }}</a></li>
+                <li><a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-md font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600" href="{{ route('blog.filterByCategory', $category) }}">{{ $category->name }}</a></li>
             @empty
                 <li><a href="">No categories yet</a></li>
             @endforelse
@@ -47,7 +46,10 @@
                 <img src="{{$post->image_path ? asset('storage/' . $post->image_path) : asset('images/pic2.jpg') }}" alt="" />
                 <p>
                     {{ $post->created_at->diffForHumans() }}
-                    <span>Written By {{ $post->user->name }}</span>
+                    <span>Written By <a class="inline-flex items-center rounded-md bg-gray-600 px-2 py-1 text-xs font-medium text-gray-50 ring-1 ring-inset ring-gray-500/10 hover:bg-gray-50 hover:text-gray-600"
+                        href="{{ route('blog.filterByUser', $post->user) }}">
+                        {{ $post->user->name }}</a>
+                    </span>
                 </p>
                 <h4 style="font-weight: bolder">
                     <a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a>
